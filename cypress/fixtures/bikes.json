@@ -1,0 +1,15 @@
+{
+    "marketPL": {
+        "brand": "Wybierz markę",
+        "year": "Wybierz rok modelowy",
+        "model": "Wybierz model"
+    },
+
+    "marketIR": {
+        "brand": "Select brand",
+        "year": "Select model year",
+        "model": "Select model"
+    },
+
+    "selectedModel": "Beta RR 125 2T 2020"
+}

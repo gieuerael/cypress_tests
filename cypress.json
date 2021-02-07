@@ -1,0 +1,12 @@
+{
+    "env": {
+        "marketPL": "https://www.24mx.pl",
+        "marketIR": "https://www.24mx.ie",
+        "productPL": "/wyposazenie-mx/kaski_c293/kaski-mx_c192/kask-oneal-1srs-czarny_pid-PM-4913455",
+        "productIR": "/motocross-gear/helmets_c293/motocross-helmets_c192/oneal-1srs-helmet-black_pid-PM-4913455"
+    },
+    
+    "numTestsKeptInMemory": 150,
+    "viewportHeight": 800,
+    "viewportWidth": 1280
+}

@@ -1,0 +1,13 @@
+{
+    "marketPL": {
+        "sendButton" : "Pokaż mój kupon",
+        "copyButton" : "Skopiuj do schowka"
+    },
+    
+    "marketIR": {
+        "sendButton" : "Show my coupon",
+        "copyButton" : "Copy to clipboard"
+    },
+    
+    "couponCode" : "ENJOY24MX10"
+}

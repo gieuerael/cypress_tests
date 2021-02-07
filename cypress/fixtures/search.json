@@ -1,0 +1,13 @@
+{
+    "marketPL": {
+        "categories" : "Wyszukaj w kategoriach",
+        "products" : "Produkty",
+        "vehicle" : "Pokaż produkty dla motocykla"
+    },
+    
+    "marketIR": {
+        "categories" : "Search in categories",
+        "products" : "Products",
+        "vehicle" : "Show products to vehicle"
+    }
+}
