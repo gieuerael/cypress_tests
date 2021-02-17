@@ -1,4 +1,5 @@
 /// <reference types="Cypress" />
+import { search } from '../fixtures/selectors'
 
 const urls = [Cypress.env('marketPL'), Cypress.env('marketIR')]
 
@@ -26,7 +27,7 @@ urls.forEach(url => {
             })
         })
 
-        context('Coupon code popup test', () => {
+        xcontext('Coupon code popup test (Coupon popup is no longer visible)', () => {
 
             before(() => {
                 openPage(url)
@@ -69,33 +70,33 @@ urls.forEach(url => {
             })
 
             it('User types \'ktm\' in search input', () => {
-                cy.get('#search-desktop')
+                cy.get(search.searchInput)
                     .should('be.visible')
                     .type('ktm')
             })
 
             it('User should see hints under search bar', function () {
-                cy.get('ul.ng-star-inserted')
+                cy.get(search.hints)
                     .should('be.visible')
 
-                cy.get('div.m-searchlist-headline')
+                cy.get(search.hintsHeadings)
                     .then(function ($element) {
                         expect($element.eq(0)).to.contain(this.data[market]['categories'])
-                        expect($element.eq(0).nextAll('.autocomplete-item')).to.have.length(9)
+                        expect($element.eq(0).nextAll(search.autoCompleteItems)).to.have.length(9)
                         expect($element.eq(1)).to.contain(this.data[market].products)
                         expect($element.eq(2)).to.contain(this.data[market]['vehicle'])
                     })
             })
 
             it('User clicks enter button', () => {
-                cy.get('#search-desktop').type('{enter}')
+                cy.get(search.searchInput).type('{enter}')
             })
 
             it('User should see search result page', () => {
-                cy.get('.m-search-header__headline > div > strong')
+                cy.get(search.resultText)
                     .should('have.text', 'ktm')
 
-                cy.get('.qa-pl-products-amount')
+                cy.get(search.productsAmount)
                     .should('be.visible')
                     .invoke('text')
                     .then((elementText) => {
@@ -190,7 +191,7 @@ urls.forEach(url => {
             before(() => {
                 openPage(url + Cypress.env('product' + market.slice(-2)))
             })
-           
+
             it('Click \'add to cart\' button before size choice', () => {
                 cy.get('button.qa-pdp-add-to-cart-btn').click()
             })
@@ -219,7 +220,7 @@ urls.forEach(url => {
             })
 
             it('Success popup should be visible', function () {
-                cy.get('.cart-loader.green-filter.ng-star-inserted', {timeout: 10000})
+                cy.get('.cart-loader.green-filter.ng-star-inserted', { timeout: 10000 })
                     .should('be.visible')
             })
 
@@ -234,12 +235,11 @@ urls.forEach(url => {
 
                 cy.get('span.qa-pli-item-name')
                     .should('contain.text', 'O\'Neal 1SRS')
-
-                // ten scenariusz z jakiegoś powodu jest niestabilny
-                // objawia się to tym ze na chwile widać koszyk z produktem, a następnie stronę z informacją "Twój koszyk jest pusty"
-                // Próbowałem dodatkowo czekać na request odpowiedzialny za dodanie produktu do koszyka oraz triggerować event pod buttonem "add to cart", ale nic nie pomogło
-                // Strasznie mnie to trapi dlaczego to tak działa, a nie inaczej :) Jeśli znają Państwo odpowiedź to proszę podesłać na grzegorz.gorski.86@gmail.com. Będe wdzięczny
             })
+            // ten scenariusz z jakiegoś powodu jest niestabilny
+            // objawia się to tym ze na chwile widać koszyk z produktem, a następnie stronę z informacją "Twój koszyk jest pusty"
+            // Próbowałem dodatkowo czekać na request odpowiedzialny za dodanie produktu do koszyka oraz triggerować event pod buttonem "add to cart", ale nic nie pomogło
+            // Strasznie mnie to trapi dlaczego to tak działa, a nie inaczej :) Jeśli znają Państwo odpowiedź to proszę podesłać na grzegorz.gorski.86@gmail.com. Będe wdzięczny
         })
     })
 })
